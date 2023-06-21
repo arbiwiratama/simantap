@@ -28,7 +28,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			post(id: "/${path}/", idType: URI) {
   				id
 				excerpt
-    				title
+				title
+				link
 				dateGmt
 				modifiedGmt
 				content
@@ -82,8 +83,10 @@ const Post: React.FC<PostProps> = (props) => {
 	return (
 		<>
 			<Head>
-				
+				<meta property="og:title" content={post.title} />
+				<link rel="canonical" href={`https://${host}/${path}`} />
 				<meta property="og:description" content={removeTags(post.excerpt)} />
+				<meta property="og:url" content={`https://${host}/${path}`} />
 				<meta property="og:type" content="article" />
 				<meta property="og:locale" content="en_US" />
 				<meta property="og:site_name" content={host.split('.')[0]} />
@@ -94,13 +97,13 @@ const Post: React.FC<PostProps> = (props) => {
 					property="og:image:alt"
 					content={post.featuredImage.node.altText || post.title}
 				/>
-				
+				<title>{post.title}</title>
 			</Head>
 			<div className="post-container">
-				
+				<h1>{post.title}</h1>
 				<img
 					src={post.featuredImage.node.sourceUrl}
-					
+					alt={post.featuredImage.node.altText || post.title}
 				/>
 				<article dangerouslySetInnerHTML={{ __html: post.content }} />
 			</div>
