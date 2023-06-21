@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			redirect: {
 				permanent: false,
 				destination: `${
-					`https://moviemantaplah.blogspot.com/2023/06/katanya-cuma-vc-eh-minta-dibuka-semua.html?m=1`
+					endpoint.replace(/(\/graphql\/)/, '/') + encodeURI(path as string)
 				}`,
 			},
 		};
