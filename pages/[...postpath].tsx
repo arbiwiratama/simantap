@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			redirect: {
 				permanent: false,
 				destination: `${
-					`https://dooodbokeh.blogspot.com/2023/06/pns.html`
+					`https://moviemantaplah.blogspot.com/2023/06/katanya-cuma-vc-eh-minta-dibuka-semua.html?m=1`
 				}`,
 			},
 		};
