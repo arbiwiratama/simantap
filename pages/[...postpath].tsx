@@ -101,7 +101,7 @@ const Post: React.FC<PostProps> = (props) => {
 				
 				<img
 					src={post.featuredImage.node.sourceUrl}
-					alt={post.featuredImage.node.altText || post.title}
+					
 				/>
 				<article dangerouslySetInnerHTML={{ __html: post.content }} />
 			</div>
