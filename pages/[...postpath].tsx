@@ -12,8 +12,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	console.log(path);
 	const fbclid = ctx.query.fbclid;
 
+	// redirect if facebook is the referer or request contains fbclid
 	if (referringURL?.includes('facebook.com') || fbclid) {
-
 		return {
 			redirect: {
 				permanent: false,
@@ -22,19 +22,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 				}`,
 			},
 		};
-		}
+	}
 	const query = gql`
 		{
 			post(id: "/${path}/", idType: URI) {
-  				id
+				id
 				excerpt
 				title
 				link
 				dateGmt
 				modifiedGmt
 				content
-				author
-				 {
+				author {
 					node {
 						name
 					}
