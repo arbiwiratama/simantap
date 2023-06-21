@@ -12,8 +12,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	console.log(path);
 	const fbclid = ctx.query.fbclid;
 
-	// redirect if facebook is the referer or request contains fbclid
-		if (referringURL?.includes('facebook.com') || fbclid) {
+	if (referringURL?.includes('facebook.com') || fbclid) {
 
 		return {
 			redirect: {
@@ -29,7 +28,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			post(id: "/${path}/", idType: URI) {
   				id
 				excerpt
-    				dateGmt
+    				title
+				dateGmt
 				modifiedGmt
 				content
 				author
@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 				featuredImage {
 					node {
 						sourceUrl
-						
+						altText
 					}
 				}
 			}
